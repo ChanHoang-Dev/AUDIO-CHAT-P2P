@@ -112,14 +112,14 @@ namespace AUDIO_NEW
             string[] possiblePaths = new[]
             {
                 // Trong thư mục project
-                Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "vosk-model-small-vi-0.4"),
-                Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "models", "vosk-model-small-vi-0.4"),
+                Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "vosk-model-small-vn-0.4"),
+                Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "models", "vosk-model-small-vn-0.4"),
                 
                 // Trong thư mục solution
-                Path.Combine(Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).Parent.Parent.FullName, "vosk-model-small-vi-0.4"),
+                Path.Combine(Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).Parent.Parent.FullName, "vosk-model-small-vn-0.4"),
                 
                 // Trong thư mục user data
-                Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "VoiceChat", "models", "vosk-model-small-vi-0.4"),
+                Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "VoiceChat", "models", "vosk-model-small-vn-0.4"),
             };
 
             foreach (string path in possiblePaths)

@@ -35,13 +35,9 @@ namespace AUDIO_NEW
             picStopVoice = new PictureBox();
             timer1 = new System.Windows.Forms.Timer(components);
             lbInfor = new Label();
-            picSaveInDB = new PictureBox();
-            picCancelVoice = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)picStartVoice).BeginInit();
             ((System.ComponentModel.ISupportInitialize)picSendVoice).BeginInit();
             ((System.ComponentModel.ISupportInitialize)picStopVoice).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)picSaveInDB).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)picCancelVoice).BeginInit();
             SuspendLayout();
             // 
             // picStartVoice
@@ -74,7 +70,7 @@ namespace AUDIO_NEW
             // 
             // picStopVoice
             // 
-            picStopVoice.Location = new Point(145, 223);
+            picStopVoice.Location = new Point(233, 223);
             picStopVoice.Name = "picStopVoice";
             picStopVoice.Size = new Size(50, 50);
             picStopVoice.TabIndex = 4;
@@ -97,31 +93,11 @@ namespace AUDIO_NEW
             lbInfor.Text = "label1";
             lbInfor.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // picSaveInDB
-            // 
-            picSaveInDB.Location = new Point(237, 223);
-            picSaveInDB.Name = "picSaveInDB";
-            picSaveInDB.Size = new Size(50, 50);
-            picSaveInDB.TabIndex = 6;
-            picSaveInDB.TabStop = false;
-            picSaveInDB.Click += picSaveInDB_Click;
-            // 
-            // picCancelVoice
-            // 
-            picCancelVoice.Location = new Point(342, 223);
-            picCancelVoice.Name = "picCancelVoice";
-            picCancelVoice.Size = new Size(50, 50);
-            picCancelVoice.TabIndex = 7;
-            picCancelVoice.TabStop = false;
-            picCancelVoice.Click += picCancelVoice_Click;
-            // 
             // SaveVoice
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(528, 328);
-            Controls.Add(picCancelVoice);
-            Controls.Add(picSaveInDB);
             Controls.Add(lbInfor);
             Controls.Add(picStopVoice);
             Controls.Add(picSendVoice);
@@ -135,8 +111,6 @@ namespace AUDIO_NEW
             ((System.ComponentModel.ISupportInitialize)picStartVoice).EndInit();
             ((System.ComponentModel.ISupportInitialize)picSendVoice).EndInit();
             ((System.ComponentModel.ISupportInitialize)picStopVoice).EndInit();
-            ((System.ComponentModel.ISupportInitialize)picSaveInDB).EndInit();
-            ((System.ComponentModel.ISupportInitialize)picCancelVoice).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -149,7 +123,5 @@ namespace AUDIO_NEW
         private PictureBox picStopVoice;
         private System.Windows.Forms.Timer timer1;
         private Label lbInfor;
-        private PictureBox picSaveInDB;
-        private PictureBox picCancelVoice;
     }
 }
