@@ -21,6 +21,8 @@
             InitializeComponent();
             this.Opacity = 0; // Fade-in bắt đầu từ 0
             timerFadeIn.Start();
+            labelPercent.Parent = panelProgress; // parent chung
+            labelPercent.BringToFront();
         }
 
         private void timerFadeIn_Tick(object sender, EventArgs e)

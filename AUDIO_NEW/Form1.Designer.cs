@@ -81,6 +81,7 @@
             labelPercent.Size = new Size(29, 20);
             labelPercent.TabIndex = 10;
             labelPercent.Text = "0%";
+            labelPercent.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // panelProgress
             // 

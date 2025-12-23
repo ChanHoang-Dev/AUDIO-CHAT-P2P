@@ -1,4 +1,4 @@
-using System;
+Ôªøusing System;
 using System.Drawing;
 using System.Windows.Forms;
 using System.IO;
@@ -8,7 +8,7 @@ using System.Diagnostics;
 namespace AUDIO_NEW
 {
     /// <summary>
-    /// Custom control ? hi?n th? voice message trong FlowLayoutPanel
+    /// Custom control ƒë? hi?n th? voice message trong FlowLayoutPanel
     /// </summary>
     public class VoiceMessageBubble : UserControl
     {
@@ -52,7 +52,7 @@ namespace AUDIO_NEW
                 Font = new Font("Arial", 9, FontStyle.Regular),
                 Location = new Point(10, 35),
                 ForeColor = Color.DarkGray,
-                Text = $"Th?i gian: {voiceMessage.Duration}s"
+                Text = $"Th·ªùi gian: {voiceMessage.Duration}s"
             };
             this.Controls.Add(lbDuration);
 
@@ -68,7 +68,7 @@ namespace AUDIO_NEW
 
             btnPlay = new Button
             {
-                Text = "? Ph·t",
+                Text = "? Ph√°t",
                 Location = new Point(10, 70),
                 Size = new Size(80, 35),
                 BackColor = Color.LightSeaGreen,
@@ -83,7 +83,7 @@ namespace AUDIO_NEW
                 AutoSize = true,
                 Font = new Font("Arial", 8, FontStyle.Bold),
                 Location = new Point(100, 70),
-                Text = "Chuy?n ?i v„n b?n:"
+                Text = "Chuy·ªÉn ƒë·ªïi vƒÉn b·∫£n:"
             };
             this.Controls.Add(lbTranscriptionTitle);
 
@@ -93,7 +93,7 @@ namespace AUDIO_NEW
                 Font = new Font("Arial", 8, FontStyle.Regular),
                 Location = new Point(100, 85),
                 Size = new Size(285, 65),
-                Text = "[–ang t?i n?i dung...]",
+                Text = "[ƒêang t·∫£i n·ªôi dung...]",
                 BackColor = Color.White,
                 BorderStyle = BorderStyle.FixedSingle,
                 Padding = new Padding(5)
@@ -124,26 +124,26 @@ namespace AUDIO_NEW
                 {
                     string content = File.ReadAllText(transcriptionPath, Encoding.UTF8);
                     lbTranscription.Text = string.IsNullOrWhiteSpace(content) 
-                        ? "[Ch˝a cÛ chuy?n ?i]" 
+                        ? "[Ch∆∞a c√≥ chuy·ªÉn ƒë·ªïi]" 
                         : content;
                     Debug.WriteLine($"[VOICE UI] Transcription loaded: {content.Substring(0, Math.Min(50, content.Length))}...");
                 }
                 else
                 {
-                    lbTranscription.Text = $"[File khÙng t?m th?y: {voiceMessage.TranscriptionFileName}]";
+                    lbTranscription.Text = $"[File kh√¥ng t√¨m th·∫•y: {voiceMessage.TranscriptionFileName}]";
                     Debug.WriteLine($"[VOICE UI] Transcription file not found: {transcriptionPath}");
                 }
             }
             catch (Exception ex)
             {
-                lbTranscription.Text = $"[L?i: {ex.Message}]";
+                lbTranscription.Text = $"[L·ªùi: {ex.Message}]";
                 Debug.WriteLine($"[VOICE UI] Error loading transcription: {ex.Message}");
             }
         }
 
         private string GetBaseFolder()
         {
-            // S? d?ng UserDataPath t? VoiceMessage n?u cÛ, n?u khÙng d˘ng hardcode
+            // S? d?ng UserDataPath t? VoiceMessage n?u c√≥, n?u kh√¥ng d√πng hardcode
             if (!string.IsNullOrEmpty(voiceMessage?.UserDataPath))
             {
                 return voiceMessage.UserDataPath;
@@ -169,18 +169,18 @@ namespace AUDIO_NEW
                 
                 if (!File.Exists(audioPath))
                 {
-                    MessageBox.Show($"File khÙng t?m th?y: {audioPath}", "L?i");
+                    MessageBox.Show($"File kh√¥ng t√¨m th·∫•y: {audioPath}", "L·ªùi");
                     Debug.WriteLine($"[VOICE UI] Audio file not found: {audioPath}");
                     return;
                 }
 
                 voiceManager.PlayAudio(audioPath);
                 Debug.WriteLine($"[VOICE UI] Playing: {audioPath}");
-                MessageBox.Show($"–ang ph·t: {voiceMessage.AudioFileName}", "ThÙng b·o");
+                MessageBox.Show($"ƒêang ph√°t: {voiceMessage.AudioFileName}", "Th√¥ng b√°o");
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"L?i ph·t ‚m thanh: {ex.Message}", "L?i");
+                MessageBox.Show($"L·ªùi ph√°t √¢m thanh: {ex.Message}", "L?i");
                 Debug.WriteLine($"[VOICE UI] Play error: {ex.Message}");
             }
         }

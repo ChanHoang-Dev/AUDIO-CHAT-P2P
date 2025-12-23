@@ -1,4 +1,4 @@
-using System;
+Ôªøusing System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -33,7 +33,7 @@ namespace AUDIO_NEW
 
             // Setup timer
             timer1.Interval = 1000;
-            timer1.Tick += timer1_Tick;
+            //timer1.Tick += timer1_Tick;
         }
 
         #region Recording Control
@@ -42,30 +42,29 @@ namespace AUDIO_NEW
         {
             if (isRecording)
             {
-                MessageBox.Show("–ang ghi ‚m r?i!");
+                MessageBox.Show("ƒêang ghi √¢m r·ªìi!");
                 return;
             }
 
             try
             {
-                timer1.Stop(); // D?ng timer c? tr˝?c khi b?t ?u
+                timer1.Stop(); // D?ng timer c? tr∆∞?c khi b?t ƒë?u
                 voiceManager.StartRecording();
                 isRecording = true;
                 elapsedTime = TimeSpan.Zero;
                 lbTime.Text = "00:00";
-                lbInfor.Text = "–ang ghi ‚m...";
+                lbInfor.Text = "ƒêang ghi √¢m...";
                 timer1.Start();
 
                 picStartVoice.Enabled = false;
                 picStopVoice.Enabled = true;
-                picSaveInDB.Enabled = false;
                 picSendVoice.Enabled = false;
 
                 Debug.WriteLine("[VOICE UI] Recording started");
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"L?i khi b?t ?u ghi ‚m: {ex.Message}");
+                MessageBox.Show($"L·ªùi khi b·∫Øt ƒë·∫ßu ghi √¢m: {ex.Message}");
             }
         }
 
@@ -73,7 +72,7 @@ namespace AUDIO_NEW
         {
             if (!isRecording)
             {
-                MessageBox.Show("Ch˝a b?t ?u ghi ‚m!");
+                MessageBox.Show("Ch∆∞a b·∫Øt ƒë·∫ßu ghi √¢m!");
                 return;
             }
 
@@ -82,18 +81,17 @@ namespace AUDIO_NEW
                 currentRecordingPath = voiceManager.StopRecording();
                 isRecording = false;
                 timer1.Stop();
-                lbInfor.Text = "–? d?ng ghi ‚m.";
+                lbInfor.Text = "ƒê√£ d·ª´ng ghi √¢m.";
 
                 picStartVoice.Enabled = true;
                 picStopVoice.Enabled = false;
-                picSaveInDB.Enabled = true;
                 picSendVoice.Enabled = true;
 
                 Debug.WriteLine($"[VOICE UI] Recording stopped: {currentRecordingPath}");
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"L?i khi d?ng ghi ‚m: {ex.Message}");
+                MessageBox.Show($"L·ªùi khi d·ª´ng ghi √¢m: {ex.Message}");
             }
         }
 
@@ -114,25 +112,24 @@ namespace AUDIO_NEW
         {
             if (string.IsNullOrEmpty(currentRecordingPath))
             {
-                MessageBox.Show("Ch˝a cÛ b?n ghi ‚m n‡o!");
+                MessageBox.Show("Ch∆∞a c√≥ b·∫£n ghi √¢m n√†o!");
                 return;
             }
 
             try
             {
-                lbInfor.Text = "–ang l˝u...";
-                picSaveInDB.Enabled = false;
+                lbInfor.Text = "ƒêang l∆∞u...";
 
-                // L?y thÙng tin ng˝?i g?i t? mainForm
+                // L?y th√¥ng tin ng∆∞?i g?i t? mainForm
                 string senderId = ""; // TODO: Get from mainForm.networkManager.UserName
                 string senderName = ""; // TODO: Get from mainForm.userDataManager.DisplayName
                 string recipientId = ""; // TODO: Get from mainForm.currentCallTarget
 
-                // B˝?c 1: Speech-to-Text
-                lbInfor.Text = "–ang chuy?n ?i speech to text...";
+                // B∆∞?c 1: Speech-to-Text
+                lbInfor.Text = "ƒêang chuy·ªÉn ƒë√¥·ªâ speech to text...";
                 string transcription = await voiceManager.TranscribeAudioAsync(currentRecordingPath);
 
-                // B˝?c 2: L˝u voice message
+                // B∆∞?c 2: L∆∞u voice message
                 var voiceMessage = await voiceManager.SaveVoiceMessage(
                     senderId: senderId,
                     senderName: senderName,
@@ -144,26 +141,25 @@ namespace AUDIO_NEW
 
                 if (voiceMessage != null)
                 {
-                    lbInfor.Text = "? –? l˝u v‡o cı s? d? li?u";
-                    MessageBox.Show("L˝u th‡nh cÙng!", "ThÙng b·o", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    lbInfor.Text = "? ƒê√£ l∆∞u v√†o c∆° s·ªü d·ªØ li·ªáu";
+                    MessageBox.Show("L∆∞u th√†nh c√¥ng!", "Th√¥ng b√°o", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     // Reset form
                     ResetForm();
                 }
                 else
                 {
-                    lbInfor.Text = "? L?i khi l˝u";
-                    MessageBox.Show("L?i khi l˝u voice message!", "L?i", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    lbInfor.Text = "? L·ªùi khi l∆∞u";
+                    MessageBox.Show("L·ªúi khi l∆∞u voice message!", "L·ªùi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             catch (Exception ex)
             {
-                lbInfor.Text = "? L?i khi l˝u";
-                MessageBox.Show($"L?i: {ex.Message}", "L?i", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                lbInfor.Text = "? L·ªùi khi l∆∞u";
+                MessageBox.Show($"L·ªùi: {ex.Message}", "L·ªùi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
-                picSaveInDB.Enabled = true;
             }
         }
 
@@ -175,25 +171,25 @@ namespace AUDIO_NEW
         {
             if (string.IsNullOrEmpty(currentRecordingPath))
             {
-                MessageBox.Show("Ch˝a cÛ b?n ghi ‚m n‡o!");
+                MessageBox.Show("Ch∆∞a c√≥ b·∫£n ghi √¢m n√†o!");
                 return;
             }
 
             try
             {
-                lbInfor.Text = "–ang g?i...";
+                lbInfor.Text = "ƒêang ghi...";
                 picSendVoice.Enabled = false;
 
-                // L?y thÙng tin ng˝?i g?i t? mainForm
+                // L?y th√¥ng tin ng∆∞?i g?i t? mainForm
                 string senderId = mainForm.GetUserName(); // Get from mainForm
                 string senderName = mainForm.GetDisplayName(); // Get from mainForm
                 string recipientId = mainForm.GetCurrentCallTarget(); // Get current chat target
 
                 // Speech-to-Text
-                lbInfor.Text = "–ang chuy?n ?i speech to text...";
+                lbInfor.Text = "ƒêang chuy·ªÉn ƒë·ªïi speech to text...";
                 string transcription = await voiceManager.TranscribeAudioAsync(currentRecordingPath);
 
-                // L˝u voice message
+                // L∆∞u voice message
                 var voiceMessage = await voiceManager.SaveVoiceMessage(
                     senderId: senderId,
                     senderName: senderName,
@@ -210,22 +206,22 @@ namespace AUDIO_NEW
                     // G?i voice message qua network
                     mainForm.SendVoiceMessage(voiceMessage);
 
-                    lbInfor.Text = "? –? g?i";
-                    MessageBox.Show("G?i th‡nh cÙng!", "ThÙng b·o", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    lbInfor.Text = " ƒê√£ g·ª≠i";
+                    MessageBox.Show("G·ª≠i th√†nh c√¥ng!", "Th√¥ng b√°o", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     ResetForm();
                     this.Close(); // Close form after sending
                 }
                 else
                 {
-                    lbInfor.Text = "? L?i khi g?i";
-                    MessageBox.Show("L?i khi l˝u voice message!", "L?i", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    lbInfor.Text = "? L·ªùi khi g·ª≠i";
+                    MessageBox.Show("L·ªùi khi l∆∞u voice message!", "L·ªùi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             catch (Exception ex)
             {
-                lbInfor.Text = "? L?i khi g?i";
-                MessageBox.Show($"L?i: {ex.Message}", "L?i", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                lbInfor.Text = " L·ªùi khi g·ª≠i";
+                MessageBox.Show($"L·ªùi: {ex.Message}", "L·ªùi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -249,11 +245,11 @@ namespace AUDIO_NEW
                 }
 
                 ResetForm();
-                MessageBox.Show("–? h?y ghi ‚m.", "ThÙng b·o", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("ƒê√£ h·ªßy ghi √¢m.", "Th√¥ng b√°o", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"L?i: {ex.Message}", "L?i", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"L·ªùi: {ex.Message}", "L·ªùi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -270,7 +266,6 @@ namespace AUDIO_NEW
 
             picStartVoice.Enabled = true;
             picStopVoice.Enabled = false;
-            picSaveInDB.Enabled = false;
             picSendVoice.Enabled = false;
         }
 
