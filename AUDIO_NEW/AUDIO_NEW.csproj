@@ -42,5 +42,9 @@
     <EmbeddedResource Remove="AUDIO_NEW\AUDIO_NEW\VoiceMessageBubble.resx" />
     <EmbeddedResource Remove="AUDIO_NEW\AUDIO_NEW\VoiceMessageBubble_Fixed.resx" />
   </ItemGroup>
-
+	<ItemGroup>
+		<None Include="Libs\vosk-model-small-vn-0.4\**\*">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+	</ItemGroup>
 </Project>

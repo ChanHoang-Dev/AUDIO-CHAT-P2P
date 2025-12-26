@@ -20,9 +20,7 @@ Thumbs.db
 packages/
 
 # ===== Vosk / model nặng =====
-vosk-model-small-vn-0.4/
-*.model
-*.zip
+
 
 # ===== Secrets / config =====
 appsettings.Development.json
